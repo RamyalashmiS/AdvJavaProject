@@ -5,7 +5,7 @@ import proj.entity.users.User;
 public interface UserDAO {
 	public void insertUser(User user);
 
-	public User readUser(User user);
+	public User readUser(String emailId);
 
 	public User updateUser(User user,String password);
 

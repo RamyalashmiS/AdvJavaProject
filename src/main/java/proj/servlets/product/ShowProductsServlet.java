@@ -1,7 +1,7 @@
 package proj.servlets.product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,48 +9,45 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import proj.entity.products.Product;
-import proj.entity.users.User;
 import proj.persist.product.ProductDAOImplement;
+
 /**
- * Servlet implementation class ProdAddServlet
+ * Servlet implementation class ShowProductsServlet
  */
-@WebServlet("/addProducts")
-public class ProdAddServlet extends HttpServlet {
+@WebServlet("/showProducts")
+public class ShowProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
 	ProductDAOImplement ProductDAOImpl=new ProductDAOImplement();
-    public ProdAddServlet() {
+    public ShowProductsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		List<Product> products= ProductDAOImpl.readProduct();
+		HttpSession session=request.getSession();
+		session.setAttribute("products", products);
+		RequestDispatcher rd=request.getRequestDispatcher("/showProducts.jsp");
+		rd.include(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String prodname=request.getParameter("prodname");
-		String desc=request.getParameter("desc");
-		Integer cost=Integer.parseInt(request.getParameter("cost"));
-			
-		Product prod=new Product();
-		prod.setCost(cost);
-		prod.setDescription(desc);
-		prod.setProdName(prodname);
-		System.out.println("in jpaservlet");
-		ProductDAOImpl.insertProduct(prod);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("showProducts");
-		response.setContentType("text/html");		
-		PrintWriter out=response.getWriter();
-        out.println("<h4 class='text-success'>Product is added successfully !!!</h4>");
-        
-        
-		rd.include(request, response);
+		doGet(request, response);
 	}
 
 }

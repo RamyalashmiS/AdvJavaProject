@@ -11,31 +11,31 @@ import javax.persistence.GenerationType;
 @Table(name="Products")
 public class Product {
 	@Id
-	@Column(name="ProductId")
+	@Column(name="productId")
 	@GeneratedValue(strategy = GenerationType.AUTO)	
-	private int prodId;
-	@Column(name="productname")
-	private String prodName;
-	@Column(name="description")
+	private int productId;
+	@Column(name="productname",length=20)
+	private String productName;
+	@Column(name="description",length=200)
 	private String description;
-	@Column(name="cost")
+	@Column(name="cost",nullable=false)
 	private int cost;
 	
 	
-	public int getProdId() {
-		return prodId;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setProdId(int prodId) {
-		this.prodId = prodId;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
-	public String getProdName() {
-		return prodName;
+	public String getProductName() {
+		return productName;
 	}
 
 	public void setProdName(String prodName) {
-		this.prodName = prodName;
+		this.productName = prodName;
 	}
 
 	public String getDescription() {
@@ -56,8 +56,8 @@ public class Product {
 
 	public Product(int prodId, String prodName, String description, int cost) {
 		super();
-		this.prodId = prodId;
-		this.prodName = prodName;
+		this.productId = prodId;
+		this.productName = prodName;
 		this.description = description;
 		this.cost = cost;
 	}

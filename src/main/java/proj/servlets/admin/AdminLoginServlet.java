@@ -1,4 +1,4 @@
-package proj.servlets.user;
+package proj.servlets.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import proj.entity.users.User;
-import proj.persist.user.UserDAOImplement;
+import proj.entity.admin.*;
+import proj.persist.admin.AdminDAOImplement;
 
 /**
  * Servlet implementation class UserLoginServlet
  */
-@WebServlet("/login")
-public class UserLoginServlet extends HttpServlet {
+@WebServlet("/admin")
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	UserDAOImplement userdao = new UserDAOImplement();
+	AdminDAOImplement admindao = new AdminDAOImplement();
 
-	public UserLoginServlet() {
+	public AdminLoginServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,48 +40,38 @@ public class UserLoginServlet extends HttpServlet {
 		String password = request.getParameter("pwd");
 		RequestDispatcher rd;
 
-		User user = new User();
-		user.setEmail(email);
-		user.setPassword(password);
+		Admin admin = new Admin();
+		admin.setEmail(email);
+		admin.setPassword(password);
 		
 		System.out.println("in jpaservlet");
 		
-		User retUserDao = userdao.readUser(user.getEmail());
 		
-//		Cookie cookies[] = request.getCookies();
-//
-//		if (cookies.length == 0) {
-//			Cookie cookieEmailObj = new Cookie("emartEmailCookie", user.getEmail());
-//			Cookie cookiePassObj = new Cookie("emartPassCookie", user.getPassword());
-//			cookieEmailObj.setMaxAge(60*60*24*30);
-//			cookiePassObj.setMaxAge(60*60*24*30);
-//			response.addCookie(cookiePassObj);
-//			response.addCookie(cookieEmailObj);	
-//		}
+		Admin retAdminDao = admindao.readAdmin(admin.getEmail());
 
-		if (retUserDao == null) {
-			rd = request.getRequestDispatcher("/userRegister.jsp");
+
+		if (retAdminDao == null) {
+			rd = request.getRequestDispatcher("/adminLogin.jsp");
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
-			out.println("<p class='h3 text-primary text-center'>Seems like you're not a registered user.... </p>");
-			out.println("<p class='h3 text-primary text-center'>Please register and login!!! </p>");
+			out.println("<p class='h3 text-primary text-center'>Seems like you're not a registered admin.... </p>");
+			out.println("<p class='h3 text-primary text-center'>Please check your emailId !!! </p>");
 			rd.include(request, response);
-		} else if (!retUserDao.getPassword().matches(password)) {
-			rd = request.getRequestDispatcher("/login.jsp");
+		} else if (!retAdminDao.getPassword().matches(password)) {
+			rd = request.getRequestDispatcher("/adminLogin.jsp");
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
 			out.println("<p class='h3 text-danger text-center'>Please check the password!!! </p>");
 			
 			rd.include(request, response);
 		} else {
-			rd = request.getRequestDispatcher("showProducts");
+			rd = request.getRequestDispatcher("addProducts.jsp");
 			HttpSession session=request.getSession();
-			session.setAttribute("user", true);
+			session.setAttribute("admin", true);
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
 
-			out.println("<p class='h3 text-warning'>Hi " + retUserDao.getUserName()
-					+ "!!! Welcome !!! </p>");
+			out.println("<p class='h3 text-warning'>Hi Admin !!! Welcome !!! </p>");
 			rd.include(request, response);
 		}
 	}

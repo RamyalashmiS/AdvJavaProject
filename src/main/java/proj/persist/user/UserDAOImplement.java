@@ -23,18 +23,20 @@ public class UserDAOImplement implements UserDAO {
 		emf.close();
 	}
 	@Override
-	public User readUser(User user) {
+	public User readUser(String emailId) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory("ProjAppn");
+		System.out.println("in userdao-1");
+		emf= Persistence.createEntityManagerFactory("ProjectApp");
 		System.out.println("database connected");
 		EntityManager em=emf.createEntityManager();
-		User u = em.find(User.class,user.getUserId());
+		User u = em.find(User.class,emailId);
 		return u;
 	}
 	@Override
 	public User updateUser(User user, String password) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory("ProjAppn");
+		System.out.println("in userdao-1");
+		emf= Persistence.createEntityManagerFactory("ProjectApp");
 		System.out.println("database connected");
 		EntityManager em=emf.createEntityManager();
 		User u = em.find(User.class,user.getUserId());
@@ -44,7 +46,8 @@ public class UserDAOImplement implements UserDAO {
 	@Override
 	public void deleteUser(User user) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory("ProjAppn");
+		System.out.println("in userdao-1");
+		emf= Persistence.createEntityManagerFactory("ProjectApp");
 		System.out.println("database connected");
 		EntityManager em=emf.createEntityManager();
 		

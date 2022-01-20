@@ -6,6 +6,7 @@
 	<persistence-unit name="ProjectApp"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>proj.entity.admin.Admin</class>
 		<class>proj.entity.users.User</class>
 		<class>proj.entity.products.Product</class>
 		<properties>

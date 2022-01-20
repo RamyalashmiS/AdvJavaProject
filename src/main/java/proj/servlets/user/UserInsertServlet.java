@@ -1,6 +1,7 @@
 package proj.servlets.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +46,12 @@ public class UserInsertServlet extends HttpServlet {
 		userdao.insertUser(user);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-		rd.forward(request, response);
+		response.setContentType("text/html");		
+		PrintWriter out=response.getWriter();
+        out.println("<h4 class='text-success'>Your registration is successful !!!</h4>");
+        out.println("<h5>Please login!!!</h5>");
+        
+		rd.include(request, response);
 	}
 
 }

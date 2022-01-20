@@ -11,13 +11,13 @@ import javax.persistence.GenerationType;
 @Table(name="Users")
 public class User {
 	
-	@Column(name="uname")
+	@Column(name="uname",length=30)
 	private String userName;
-	@Column(name="email")
-	private String email;
-	@Column(name="pwd")
-	private String password;
 	@Id
+	@Column(name="email",length=30)
+	private String email;
+	@Column(name="pwd",length=15)
+	private String password;	
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private int userId;
