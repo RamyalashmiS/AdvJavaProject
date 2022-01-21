@@ -17,6 +17,7 @@
 		<li class="nav-item" > <a class="nav-link text-secondary" href="login.jsp">Login</a></li>		
 	</ul>
 	<span><a class="nav-link text-secondary" href="contact.jsp">Contact Us</a></span>
+	<span><a class="nav-link text-secondary" href="logout.jsp">Log Out</a></span>
 </nav>
 </body>
 </html>

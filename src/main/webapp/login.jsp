@@ -62,10 +62,11 @@
 					</div>
 				</form>
 			</div>
-			<a class="text-center col-6 offset-3 h3 mt-5 jumbotron"
+			<div class="row">
+			<a class="text-center col-5 h3 mt-5 jumbotron"
 				href="userRegister.jsp">Not a registered user? Click here to
-				register</a> <a class="text-center col-6 offset-3 h3 mt-5 jumbotron"
-				href="loginAdmin.jsp">Click here to login as Admin</a>
+				register</a> <a class="text-center col-5 offset-1 h3 mt-5 jumbotron"
+				href="loginAdmin.jsp">Click here to login as Admin</a></div>
 		</div>
 	</div>
 </body>

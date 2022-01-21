@@ -13,7 +13,7 @@ background: linear-gradient(72deg, rgba(159,205,190,0.7906512946975666) 0%, rgba
 			 
 	<div class="text-center mt-3 container">
 		<div class="row card">
-			<span class="col-12 h1 mt-3  card-header text-center text-info"> Currently We're working on our cart site!!! <br> So, till it's open or service,
+			<span class="col-12 h1 mt-3  card-header text-center text-info"> Currently We're working on our cart site!!! <br> So, till it's open for service,
 			 please place your orders through our contact number or through our mail id....<br>
 			  We thank you for your patience !!! </span>
 			<div class="col-12 card-body m-5">

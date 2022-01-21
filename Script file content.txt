@@ -1,0 +1,28 @@
+use ProductDB;
+
+create table Users (
+	id integer,
+    uname varchar(30),
+    email varchar(30) primary key,
+    pwd varchar(15)      
+    );
+  
+create table Products(
+	ProductId int primary key,
+    productname varchar(20),
+    description varchar(200),
+    cost int not null
+);
+
+create table Admin (    
+    email varchar(30) primary key,
+    pwd varchar(15)      
+    );
+    
+show tables;
+
+insert into products (ProductId, productname, description, cost) values (101,"Pepsodent Toothpaste","PEPSODENT Cavity Protection Toothpaste. 300 g, Pack of 2",105),(102,"Dettol Bathing Soap","Dettol Original Germ Protection Bathing Soap bar, 125gm (Pack of 5)",229),(103,"DABUR Hair Oil","Dabur Amla Hair Oil for Strong , Long and Thick Hair -450ml",179);
+ 
+select * from products;
+ 
+insert into Admin (email,pwd) value ("ramya.skhr@gmail.com","Ramya_raji");

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import proj.entity.products.Product;
-import proj.entity.users.User;
+
 import proj.persist.product.ProductDAOImplement;
 /**
  * Servlet implementation class ProdAddServlet
